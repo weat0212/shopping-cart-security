@@ -1,4 +1,4 @@
-package net.javaguides.springboot.springsecurity.web;
+package net.javaguides.springboot.springsecurity.controller;
 
 import javax.validation.Valid;
 
