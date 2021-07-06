@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+    <title>Shopping List</title>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">Webcomm</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+
+<!--/*@thymesVar id="products" type="java.util.List"*/-->
+<!--/*@thymesVar id="product" type="net.javaguides.springboot.model.Product"*/-->
+<div class="contain-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">購買清單</h1>
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(product)}">
+                        <form th:action="@{/purchase}" method="post">
+                            <table class="table table-hover">
+                                <thead class="thread-inverse">
+                                <tr>
+                                    <th>訂單編號</th>
+                                    <th>商品</th>
+                                    <th>價格</th>
+                                    <th>數量</th>
+                                </tr>
+                                </thead>
+                                <tr th:remove="all">
+                                    <td>蘋果</td>
+                                    <td>元/顆</td>
+                                    <td></td>
+                                    <td><a>1000</a></td>
+                                </tr>
+                                <tr th:remove="all">
+                                    <td>香蕉</td>
+                                    <td>元/條</td>
+                                    <td></td>
+                                    <td><a>1000</a></td>
+                                </tr>
+                                <tr th:each="record:${purchase_record}">
+                                    <td th:text="${record.product}">西瓜</td>
+                                    <td th:text="${record.price}">元/每片</td>
+                                    <td></td>
+                                    <td th:text="${record.inventory}">1000</td>
+                                </tr>
+                            </table>
+                            <p>
+                                <span sec:authentication="principal.username">你好，您總共購買</span>
+
+                                <span>，總計</span>
+
+                                <span>元</span>
+                            </p>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript"
+        th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>
