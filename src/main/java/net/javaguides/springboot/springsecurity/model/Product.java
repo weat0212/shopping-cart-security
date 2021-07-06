@@ -18,6 +18,6 @@ public class Product {
     private int price;
     private int inventory;
     private Timestamp createTime;
-    private Timestamp  updateTime;
+    private Timestamp updateTime;
 
 }

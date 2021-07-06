@@ -33,4 +33,9 @@ public class ProductServiceImpl implements ProductService {
     public void modify(Product pd) {
         productRepository.save(pd);
     }
+
+    @Override
+    public void deleteInfo(Long id) {
+        productRepository.deleteById(id);
+    }
 }
