@@ -31,12 +31,7 @@ public class MainController {
         return "user/index";
     }
 
-    /**
-     * 取得產品資訊
-     * @param model
-     * @return
-     */
-    @GetMapping(value = "/products")
+    @GetMapping(value = "/productsInfo")
     public String getProductInformation(Model model) {
         log.debug("Getting Products Information Page...");
         model.addAttribute("product", productService.findAll());
