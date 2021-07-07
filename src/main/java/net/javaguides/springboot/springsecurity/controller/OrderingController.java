@@ -4,11 +4,14 @@ import lombok.extern.slf4j.Slf4j;
 import net.javaguides.springboot.springsecurity.service.OrderingService;
 import net.javaguides.springboot.springsecurity.service.ProductService;
 import net.javaguides.springboot.springsecurity.service.UserService;
+import net.javaguides.springboot.springsecurity.web.dto.OrderingDto;
 import net.javaguides.springboot.springsecurity.web.dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
