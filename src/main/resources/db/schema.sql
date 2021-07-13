@@ -1,4 +1,6 @@
 
+# CREATE DATABASE users_database;
+
 use users_database;
 
 CREATE TABLE IF NOT EXISTS  `product` (
